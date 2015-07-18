@@ -27,13 +27,14 @@ class DataFeedCapture
 				@fish_id = extract_fish_species(feed_desc)
 				@fish_count = extract_fish_count(feed_desc) 
 
-				Count.create(dam_id: @dam_id, date: @date, fish_id: @fish_id, count: @fish_count)
+				FishCount.create(dam_id: @dam_id, count_date: @date, fish_id: @fish_id, count: @fish_count)
 			end
  		end
 	end
+end
 
 
-	private 
+private 
     
     # Refactor this verboseness
     # Extracting the Dam name and Date of count from the xml title
@@ -42,19 +43,20 @@ class DataFeedCapture
 	end
 
 	def extract_date(str)
-		str[title_regex].to_date
+		date = str[title_regex]
+		Date.strptime(date, '%m/%d/%Y')
 	end
 
 	def extract_dam_id(str)
 		dam_name = str.gsub(title_regex, '').strip!
-		dam_id = (Dam.find_by :name => dam_name).id
+		dam_id = (Dam.where("LOWER(name) LIKE ?", dam_name.downcase).first).id
 		return dam_id
 	end
 
 	# Extracting the species & count from the xml description
 	def extract_fish_species(str)
 		fish_name = str.split(/\d/).first.strip! # remove digits & whitespace to just name
-		fish_id = (Fish.find_by :name => fish_name).id
+		fish_id = (Fish.where("LOWER(name) LIKE ?", fish_name.downcase).first).id
 		#item.match("Adult") ? true : false # confirm whether Adult or Jack Chinook
 		return fish_id
 	end
@@ -63,5 +65,3 @@ class DataFeedCapture
 		count = str[/\d{1,10}/]
 		count.gsub(',','').to_i
 	end
-
-end
