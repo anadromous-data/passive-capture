@@ -1,20 +1,20 @@
-require 'open-uri'
-
-
 class DataFeedCapture
+	require 'open-uri'
+	require 'Nokogiri'
 
-	def create
+	def initialize
 		# Snag FPC RSS
-		doc = Nokogiri::XML(open("http://www.fpc.org/rss/rssAdultCounts.aspx"))
+		@doc = Nokogiri::XML(open("http://www.fpc.org/rss/rssAdultCounts.aspx"))
 
 		# Validate RSS consistency. Future versions should include a mailer that notifies admins if this is ever false
-		doc.xpath("//item").count == 14 ? true : false
+		# doc.xpath("//item").count == 14 ? true : false
 	end
 
 
 
-	def parse_to_db(capture)
+	def parse_to_db
 		# Parse FPC report
+		capture = @doc
 		capture.css('item').each do |node|
 			dam_name_and_date = node.css('title').inner_text
 			@dam_id = extract_dam_id(dam_name_and_date)
@@ -27,12 +27,7 @@ class DataFeedCapture
 				@fish_id = extract_fish_species(feed_desc)
 				@fish_count = extract_fish_count(feed_desc) 
 
-				Count.create (
-					:dam_id = @dam_id
-					:date = @date
-					:fish_id = @fish_id
-					:count = @fish_count
-				)
+				Count.create(dam_id: @dam_id, date: @date, fish_id: @fish_id, count: @fish_count)
 			end
  		end
 	end
@@ -42,28 +37,30 @@ class DataFeedCapture
     
     # Refactor this verboseness
     # Extracting the Dam name and Date of count from the xml title
-	def extract_date(str)
+	def title_regex
 		regex = /\d{1,2}\/\d{1,2}\/\d{4}/
-		str[regex].to_date
+	end
+
+	def extract_date(str)
+		str[title_regex].to_date
 	end
 
 	def extract_dam_id(str)
-		regex = /\d{1,2}\/\d{1,2}\/\d{4}/
-		dam_name = str.gsub(regex, '').strip!
+		dam_name = str.gsub(title_regex, '').strip!
 		dam_id = (Dam.find_by :name => dam_name).id
 		return dam_id
 	end
 
 	# Extracting the species & count from the xml description
 	def extract_fish_species(str)
-		fish_name = item.split(/\d/).first.strip! # remove digits & whitespace to just name
+		fish_name = str.split(/\d/).first.strip! # remove digits & whitespace to just name
 		fish_id = (Fish.find_by :name => fish_name).id
 		#item.match("Adult") ? true : false # confirm whether Adult or Jack Chinook
 		return fish_id
 	end
 
 	def extract_fish_count(str)
-		count = i[/\d{1,10}/]
+		count = str[/\d{1,10}/]
 		count.gsub(',','').to_i
 	end
 
