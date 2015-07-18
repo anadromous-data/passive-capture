@@ -4,6 +4,48 @@
 
 body {
 	
+	/* Temporarily adding font style to entire site */
 	font-family: "font-family: Volkhorn, serif";
+
+}
+
+/* Background image style */
+
+.bg-picture {
+
+	opacity: 0.9;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: -1;	
+
+}
+
+.text-block-1 {
+
+	background-color: #fff;
+	padding: 2em;
+	border-radius: 10px 10px 10px 10px;
+	opacity: 0.6;
+
+	h1 {
+		opacity: 1;
+	}
+
+
+}
+
+.text-block-2 {
+	
+	background-color: #fff;
+	padding: 2em;
+	border-radius: 10px 10px 10px 10px;
+	opacity: 0.9;
+
+	h1 {
+		opacity: 1;
+	}
+
 
 }
