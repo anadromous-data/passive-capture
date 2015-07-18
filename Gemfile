@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'd3-rails'
+gem 'resque'
+gem 'resque-scheduler'
 
 
 group :development, :test do
