@@ -1,11 +1,6 @@
 = image_tag("orcas.jpg", :class => "bg-picture" )
 .container
-  .col-md-6.col-md-offset-3
+  .col-md-8.col-md-offset-2
     .text-block-1
-      %h1.text-center
-        passive_capture
-      %p
-        Passive capture is a project to enable greater insight & visualization into anadromous fish runs in the Pacific Northwest.
-
-      %p 
-        Soon we will launch a dashboard and statistics for each of the dams marked on the above map. Farther down the line we will analyze data spanning the past several decades to allow us to project fish counts, large-scale fish kills, and the rate at which our native fish move through the Columbia River watershed. Check back soon, or get in touch to collaborate.
+      = render :partial => "home_map"
+      

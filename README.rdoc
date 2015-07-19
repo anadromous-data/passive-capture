@@ -1,28 +1,24 @@
-== README
+== Passive Capture
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+7/19/2015
 
-Things you may want to cover:
+Standard Rails config to get running:
 
-* Ruby version
+* Ruby version 2.2
 
-* System dependencies
+* Postgres
 
-* Configuration
+* Fork it
 
-* Database creation
+* Clone it
 
-* Database initialization
+* Bundle it
 
-* How to run the test suite
+* Fix it
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Pull request it
 
 
-Please feel free to use a different markup language if you do not plan to run
+Please note that if you'd like to get running with the scraper, you'll need a dump file. Email me and I'll be happy to pass it along. 
+
 <tt>rake doc:app</tt>.
