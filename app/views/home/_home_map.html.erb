@@ -32,7 +32,9 @@
 	        L.latLng(line_points.shift())
 	        );
 	    // Change 479 to array length. 
-	    if (++pointsAdded < 479) window.setTimeout(add, 50);
+	    if (++pointsAdded < 479) window.setTimeout(add, 80);
+
+	    map.setView([46.24, (line_points.shift())[1]], 6);
 
 	}
 
