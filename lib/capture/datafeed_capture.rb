@@ -27,7 +27,13 @@ class DataFeedCapture
 				@fish_id = extract_fish_species(feed_desc)
 				@fish_count = extract_fish_count(feed_desc) 
 
-				FishCount.create(dam_id: @dam_id, count_date: @date, fish_id: @fish_id, count: @fish_count)
+				begin
+					@new_count = FishCount.new(dam_id: @dam_id, count_date: @date, fish_id: @fish_id, count: @fish_count)
+					@new_count.save!
+				rescue ActiveRecord::RecordInvalid => invalid
+					puts invalid.record.errors
+				end
+
 			end
  		end
 	end
