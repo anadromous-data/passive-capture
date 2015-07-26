@@ -16,6 +16,8 @@ gem 'd3-rails'
 gem 'nokogiri'
 gem 'resque'
 gem 'resque-scheduler'
+gem 'devise'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 
 group :development, :test do
