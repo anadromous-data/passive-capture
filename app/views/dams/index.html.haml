@@ -1,0 +1,9 @@
+.container
+  - @dams.each do |dam|
+    .col-md-8
+      %h2
+        = dam.name
+      %p
+        = dam.fish_counts.last.count_date
+        = dam.fish_counts.last.fish.name
+        = dam.fish_counts.last.count
