@@ -5,6 +5,7 @@ class DamsController < ApplicationController
 	end
 
 	def show
+		@dam = Dam.find(params[:id])
 	end
 
 end
