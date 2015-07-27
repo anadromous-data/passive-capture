@@ -6,7 +6,7 @@ class DamsController < ApplicationController
 	end
 
 	def show
-		@dam = Dam.friendly.find(params[:id])
+		@dam = Dam.includes(:fish_counts, :fish).friendly.find(params[:id])
 	end
 
 end

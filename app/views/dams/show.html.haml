@@ -1,1 +1,11 @@
 .container
+  .col-md-8
+    %h2
+      = @dam.name
+    - @dam.fish_counts.each do |count|
+      %p
+        = count.count_date
+        %strong :
+        = count.fish.name
+        %strong :
+        = count.count
