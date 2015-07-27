@@ -4,7 +4,7 @@ class DataFeedCapture
 
 	def initialize
 		# Snag FPC RSS
-		@doc = Nokogiri::XML(open("http://www.fpc.org/rss/rssAdultCounts.aspx"))
+		@capture = Nokogiri::XML(open("http://www.fpc.org/rss/rssAdultCounts.aspx"))
 
 		# Validate RSS consistency. Future versions should include a mailer that notifies admins if this is ever false
 		# doc.xpath("//item").count == 14 ? true : false
@@ -14,8 +14,7 @@ class DataFeedCapture
 
 	def parse_to_db
 		# Parse FPC report
-		capture = @doc
-		capture.css('item').each do |node|
+		@capture.css('item').each do |node|
 			dam_name_and_date = node.css('title').inner_text
 			@dam_id = extract_dam_id(dam_name_and_date)
 			@date = extract_date(dam_name_and_date)
