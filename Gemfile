@@ -14,10 +14,11 @@ gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'd3-rails'
 gem 'nokogiri'
-gem 'resque'
-gem 'resque-scheduler'
-gem 'devise'
-gem 'activeadmin', '~> 1.0.0.pre1'
+# gem 'resque'
+# gem 'resque-scheduler'
+# gem 'devise'
+# gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'friendly_id'
 
 
 group :development, :test do

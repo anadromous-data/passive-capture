@@ -2,7 +2,7 @@
   - @dams.each do |dam|
     .col-md-8
       %h2
-        = dam.name
+        = link_to "#{dam.name}", dam_url(dam)
       - dam.fish_counts.each do |count|
         %p
           = count.count_date
