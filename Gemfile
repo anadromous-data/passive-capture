@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'd3-rails'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.6.6'
 # gem 'resque'
 # gem 'resque-scheduler'
 # gem 'devise'
