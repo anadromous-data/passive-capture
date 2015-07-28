@@ -1,6 +1,6 @@
 class DataFeedCapture
 	require 'open-uri'
-	require 'Nokogiri'
+	require 'nokogiri'
 
 	def initialize
 		# Snag FPC RSS
