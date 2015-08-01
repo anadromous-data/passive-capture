@@ -1,12 +1,4 @@
-.container
-  - @dams.each do |dam|
-    .col-md-8
-      %h2
-        = link_to "#{dam.name}", dam_url(dam)
-      - dam.fish_counts.each do |count|
-        / %p
-        /   = count.count_date
-        /   %strong :
-        /   = count.fish.name
-        /   %strong :
-        /   = count.count
+= render :partial => "sidebar"
+.col-md-10
+  .text-block-1
+    = render :partial => "home/home_map.html.erb"

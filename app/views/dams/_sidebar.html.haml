@@ -1,0 +1,7 @@
+.col-md-2
+  .panel.panel-default.text-block-1
+    .panel-heading Index of Dams
+    %ul.list-group
+      - @dams.each do |dam|
+        %li.list-group-item
+          = link_to "#{dam.name}", dam_url(dam)
