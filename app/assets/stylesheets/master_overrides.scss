@@ -20,6 +20,11 @@ body {
 	z-index: -1;	
 }
 
+.bg-about {
+	background-image: image-url("nerka.jpg");
+	background-repeat: repeat;
+}
+
 /* Navigation styling */
 .navbar-text {
 	a {
