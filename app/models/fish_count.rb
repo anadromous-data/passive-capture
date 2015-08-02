@@ -9,6 +9,8 @@ class FishCount < ActiveRecord::Base
 	validates :count_date, presence: true
 	validates :count_date, :uniqueness => { :scope => [:dam_id, :fish_id] }
 
+	scope :for_year, lambda {|year| where("count_date >= ? and count_date <= ?", "#{year}-01-01", "#{year}-12-31")}
+
 	def format_date
     	self.date.strftime("%B %d, %Y")
     end
