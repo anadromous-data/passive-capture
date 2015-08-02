@@ -13,4 +13,8 @@ class FishCount < ActiveRecord::Base
     	self.date.strftime("%B %d, %Y")
     end
 
+    def previous_count
+
+    end
+
 end

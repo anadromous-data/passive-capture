@@ -12,7 +12,13 @@
           = will_paginate @fish_counts, renderer: BootstrapPagination::Rails
     - @fish_counts.each do |count|
       %p.list-group-item
-        %span.badge.fishcount-badge 
+        - if count.count > 200
+          %span.badge.custom-badges.increasing-badge
+            %span.glyphicon.glyphicon-menu-up
+        - else
+          %span.badge.custom-badges.decreasing-badge
+            %span.glyphicon.glyphicon-menu-down
+        %span.badge.custom-badges.fishcount-badge
           = count.count
         %em Species:
         %strong

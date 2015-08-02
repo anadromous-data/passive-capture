@@ -102,9 +102,22 @@ body {
     min-width: 100%;
 }
 
-.fishcount-badge {
-	background-color: #4C76A0;
+/* Badges for fish counts */
+.custom-badges {
 	font-family: Helvetica;
     padding: 2px 8px 2px 8px;
     font-weight: 100; 
 }
+
+.fishcount-badge {
+		background-color: #4C76A0;
+	}
+
+.increasing-badge {
+		background-color: #438652;
+
+	}
+.decreasing-badge {
+		background-color: #D20B30;
+
+	}
