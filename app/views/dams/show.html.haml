@@ -11,17 +11,37 @@
       %h3 
         = @dam.name
       .row
+        %span.badge.custom-badges.increasing-badge
+          %span.glyphicon.glyphicon-menu-up
+        Up from yesterday 
+        %span.badge.custom-badges.decreasing-badge
+          %span.glyphicon.glyphicon-menu-down
+        Down from yesterday 
+        %span.badge.custom-badges.same-badge
+          %span.glyphicon.glyphicon-minus
+        No Change 
+        %span.badge.custom-badges.notfound-badge
+          %span.glyphicon.glyphicon-ban-circle
+        Not Found 
+      .row
         .nav
           %ul.pagination
             = will_paginate @fish_counts, renderer: BootstrapPagination::Rails
     - @fish_counts.each do |count|
       %p.list-group-item
-        - if count.count > 200
-          %span.badge.custom-badges.increasing-badge
-            %span.glyphicon.glyphicon-menu-up
+        - if count.last_count == false
+          %span.badge.custom-badges.notfound-badge
+            %span.glyphicon.glyphicon-ban-circle
         - else
-          %span.badge.custom-badges.decreasing-badge
-            %span.glyphicon.glyphicon-menu-down
+          - if count.count > count.last_count
+            %span.badge.custom-badges.increasing-badge
+              %span.glyphicon.glyphicon-menu-up
+          - elsif
+            %span.badge.custom-badges.decreasing-badge
+              %span.glyphicon.glyphicon-menu-down
+          - else
+            %span.badge.custom-badges.same-badge
+              %span.glyphicon.glyphicon-minus
         %span.badge.custom-badges.fishcount-badge
           = count.count
         %em Species:

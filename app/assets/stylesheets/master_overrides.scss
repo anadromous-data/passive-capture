@@ -114,10 +114,16 @@ body {
 	}
 
 .increasing-badge {
-		background-color: #438652;
+		background-color: #438652 !important;
 
 	}
 .decreasing-badge {
-		background-color: #D20B30;
+		background-color: #D20B30 !important;
 
 	}
+.same-badge {
+		background-color: #FDBE30 !important;
+	}
+.notfound-badge {
+		background-color: #000 !important;
+	}	

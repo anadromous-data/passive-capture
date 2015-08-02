@@ -11,12 +11,17 @@ class FishCount < ActiveRecord::Base
 
 	scope :for_year, lambda {|year| where("count_date >= ? and count_date <= ?", "#{year}-01-01", "#{year}-12-31")}
 
+
 	def format_date
     	self.date.strftime("%B %d, %Y")
     end
 
-    def previous_count
-
+    def last_count
+    	begin
+    		count = FishCount.where('(count_date = ? AND fish_id = ? AND dam_id = ?)', self.count_date.ago(1.day), self.fish_id, self.dam_id).first.count
+    	rescue 
+    		return false
+    	end
     end
 
 end
