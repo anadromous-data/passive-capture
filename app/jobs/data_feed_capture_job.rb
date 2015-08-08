@@ -1,4 +1,5 @@
 class DataFeedCaptureJob
+	extend HerokuResqueAutoscaler if Rails.env.production?
 	require 'capture/datafeed_capture'
 
 	def self.queue
@@ -6,7 +7,9 @@ class DataFeedCaptureJob
 	end
 	
 	def self.perform
-		@stream = DataFeedCapture.new
-		@stream.parse_to_db
+		stream = DataFeedCapture.new
+		puts "your mom" * 1000
+		rails.logger.info(stream)
+		stream.parse_to_db
 	end
 end
