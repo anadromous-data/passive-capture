@@ -3,7 +3,7 @@ require 'resque/tasks'
 
 task "resque:setup" => :environment do
 	require 'resque'
-    require 'resque_scheduler'
+    require 'resque-scheduler'
 	ENV['QUEUE'] = '*'
 
     # you probably already have this somewhere
