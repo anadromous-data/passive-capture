@@ -1,0 +1,5 @@
+datafeed_capture:
+  every: 30s
+  class: DataFeedCaptureJob
+  args:
+  description: Runs the method in DataFeedCaptureJob every hour
