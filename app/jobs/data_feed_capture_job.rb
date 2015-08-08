@@ -9,7 +9,7 @@ class DataFeedCaptureJob
 	def self.perform
 		stream = DataFeedCapture.new
 		puts "your mom" * 1000
-		rails.logger.info(stream)
+		Rails.logger.info(stream)
 		stream.parse_to_db
 	end
 end
