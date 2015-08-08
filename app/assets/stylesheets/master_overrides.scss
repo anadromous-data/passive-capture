@@ -131,4 +131,11 @@ body {
 	}
 .notfound-badge {
 		background-color: #000 !important;
-	}	
+	}
+
+/* Repsonsive */
+
+@media screen and (max-width: 800px){
+	.dam-graph-block {display:none;}
+	.sidebar-block {display: none;}
+}
