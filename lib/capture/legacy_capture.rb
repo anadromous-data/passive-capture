@@ -27,9 +27,6 @@ class LegacyCapture
 			end
 		end
 	end
-end
-
-private
 
 	# Splits fish name headers so they can add to DB seamlessly
 	def proper_headers(arr)
@@ -76,3 +73,4 @@ private
 		end
 		return @collect
 	end
+end

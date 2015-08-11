@@ -36,10 +36,6 @@ class DataFeedCapture
 			end
  		end
 	end
-end
-
-
-private 
     
     # Refactor this verboseness
     # Extracting the Dam name and Date of count from the xml title
@@ -70,3 +66,4 @@ private
 		count = str[/\d{1,10}/]
 		count.gsub(',','').to_i
 	end
+end
