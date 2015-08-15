@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     resources :dams, only: [:index, :show] do
   	  resources :fish_counts, only: [:index, :show]
     end
+
+    resources :fish, only: [:index, :show] do
+    end
 end

@@ -40,7 +40,7 @@
         = count.count
       %em Species:
       %strong
-        = count.fish.name
+        = link_to "#{count.fish.name}", fish_url(count.fish)
       %br
       %em Date Observed:
       %strong
