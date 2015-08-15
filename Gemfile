@@ -24,7 +24,8 @@ gem 'heroku_resque_autoscaler'
 gem 'resque-scheduler'
 # gem 'devise'
 # gem 'activeadmin', '~> 1.0.0.pre1'
-# gem "paperclip", "~> 4.3"
+gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '< 2.0'
 gem 'friendly_id'
 
 

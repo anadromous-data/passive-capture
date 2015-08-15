@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   	  resources :fish_counts, only: [:index, :show]
     end
 
-    resources :fish, only: [:index, :show] do
-    end
+    resources :fish
 end
