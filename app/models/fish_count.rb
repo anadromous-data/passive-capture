@@ -16,10 +16,16 @@ class FishCount < ActiveRecord::Base
     	self.date.strftime("%B %d, %Y")
     end
 
+    def ordered_year_count
+    	FishCount.for_year(Date.today.year).order(count_date: :desc)
+    end
+
     def last_count
+    	ordered_count = self.ordered_year_count.where("dam_id = ? AND fish_id = ?", self.dam_id, self.fish_id)
+    	range = ordered_count.where(:count_date => self.count_date.ago(1.month)..self.count_date)
     	begin
-    		count = FishCount.where('(count_date = ? AND fish_id = ? AND dam_id = ?)', self.count_date.ago(1.day), self.fish_id, self.dam_id).first.count
-    	rescue 
+    		count = range[1].count
+    	rescue
     		return false
     	end
     end

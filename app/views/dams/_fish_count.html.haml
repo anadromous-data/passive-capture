@@ -30,7 +30,7 @@
         - if count.count > count.last_count
           %span.badge.custom-badges.increasing-badge
             %span.glyphicon.glyphicon-menu-up
-        - elsif
+        - elsif count.count < count.last_count
           %span.badge.custom-badges.decreasing-badge
             %span.glyphicon.glyphicon-menu-down
         - else
