@@ -19,7 +19,7 @@ function appendChart(count_data) {
   var legendRectSize = 18;                             
   var legendSpacing = 4;                               
 
-  var color = d3.scale.category20c();
+  var color = d3.scale.category20c(); 
 
   var svg = d3.select('#show_graph')
     .append('svg')
@@ -37,6 +37,19 @@ function appendChart(count_data) {
     .value(function(d) { return d.count; })
     .sort(null);
 
+  var tooltip = d3.select('#show_graph')             
+    .append('div')                             
+    .attr('class', 'tooltip');                 
+
+    tooltip.append('div')                        
+      .attr('class', 'label');                   
+
+    tooltip.append('div')                        
+      .attr('class', 'count');                   
+
+    tooltip.append('div')                        
+      .attr('class', 'percent');  
+
   var path = svg.selectAll('path')
     .data(pie(dataset))
     .enter()
@@ -45,6 +58,21 @@ function appendChart(count_data) {
     .attr('fill', function(d, i) { 
       return color(d.data.fish.name);
     });
+
+    path.on('mouseover', function(d) {                            
+      var total = d3.sum(dataset.map(function(d) {                
+        return d.count;                                           
+        }));                                                        
+      var percent = Math.round(1000 * d.data.count / total) / 10; 
+        tooltip.select('.label').html(d.data.fish.name);                
+        tooltip.select('.count').html(d.data.count);                
+        tooltip.select('.percent').html(percent + '%');             
+        tooltip.style('display', 'block');                          
+      });                                                           
+          
+          path.on('mouseout', function() {                              
+            tooltip.style('display', 'none');                           
+          });
 
   var legend = svg.selectAll('.legend')                
     .data(color.domain())                              

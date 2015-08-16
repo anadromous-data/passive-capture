@@ -133,9 +133,32 @@ body {
 		background-color: #000 !important;
 	}
 
+/* donut */
 #show_graph {
-	margin: 5% 5%;
+  height: 400px;
+  margin: 10px auto;
+  position: relative;
+  width: 400px;
 }
+
+.legend {
+	font-size: 12px;
+}
+
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 80px;
+  z-index: 10;
+} 
 
 /* Repsonsive */
 
