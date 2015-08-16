@@ -3,8 +3,7 @@
 .col-md-5.dam-graph-block
   .panel.panel-default.text-block-1
     .panel-heading.text-center
-      = @fish_counts.first.format_date
-      count data
+      Data From Our Most Recent Count
     = render :partial => "dam_graph"
     - @fish.each do |fish|
       %ul 
