@@ -8,6 +8,7 @@ class DamsController < ApplicationController
 	def show
 		@dams = Dam.all
 		@dam = Dam.includes(:fish_counts, :fish).friendly.find(params[:id])
+		@fish = Fish.all.order(id: :asc)
 		@fish_counts = FishCount.for_year(Date.today.year).where("dam_id =?", @dam.id).limit(200).order(count_date: :desc).paginate(:page => params[:page], :per_page => 20)
 	end
 

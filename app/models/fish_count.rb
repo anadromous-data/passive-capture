@@ -13,7 +13,7 @@ class FishCount < ActiveRecord::Base
 
 
 	def format_date
-    	self.date.strftime("%B %d, %Y")
+    	self.count_date.strftime("%B %d, %Y")
     end
 
     #orders the scoped year by count_date

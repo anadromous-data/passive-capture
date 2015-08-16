@@ -3,8 +3,13 @@
 .col-md-5.dam-graph-block
   .panel.panel-default.text-block-1
     .panel-heading.text-center
-      = Time.now.year 
+      = @fish_counts.first.format_date
       count data
     = render :partial => "dam_graph"
+    - @fish.each do |fish|
+      %ul 
+        %li
+          %strong #{fish.name} : 
+          = fish.id
 .col-md-5.fish-count-block
   = render :partial => "fish_count"
