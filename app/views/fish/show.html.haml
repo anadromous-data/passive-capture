@@ -1,9 +1,10 @@
 .sidebar-block
   = render :partial => "sidebar"
-.col-md-5.dam-graph-block
+.col-md-5
   .panel.panel-default.text-block-1
     .panel-heading.text-center
       = @fish.name
       .jumbotron
-        %em fish data coming soon
+        = image_tag @fish.avatar.url(:med) if @fish.avatar_file_name
+      %em fish data coming soon
 
