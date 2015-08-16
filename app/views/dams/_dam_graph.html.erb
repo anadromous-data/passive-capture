@@ -12,8 +12,8 @@ console.log(rel_path);
 function appendChart(count_data) {
 
   var dataset = count_data;
-  var width = 360;
-  var height = 360;
+  var width = 400;
+  var height = 400;
   var radius = Math.min(width, height) / 2;
   var donutWidth = 75;
   var legendRectSize = 18;                             
@@ -43,7 +43,7 @@ function appendChart(count_data) {
     .append('path')
     .attr('d', arc)
     .attr('fill', function(d, i) { 
-      return color(d.data.fish_id);
+      return color(d.data.fish.name);
     });
 
   var legend = svg.selectAll('.legend')                
@@ -85,7 +85,7 @@ $.ajax({
            url: rel_path,
            dataType: 'json',
            success: function (data) {
-               count_data = data.fish_counts;
+               count_data = data;
                appendChart(count_data);
                console.log(data);
            },

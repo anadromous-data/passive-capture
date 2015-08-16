@@ -5,10 +5,5 @@
     .panel-heading.text-center
       Data From Our Most Recent Count
     = render :partial => "dam_graph"
-    - @fish.each do |fish|
-      %ul 
-        %li
-          %strong #{fish.name} : 
-          = fish.id
 .col-md-5.fish-count-block
   = render :partial => "fish_count"
