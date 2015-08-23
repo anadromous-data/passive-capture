@@ -1,13 +1,14 @@
 class DamsController < ApplicationController
 
 	def index
-		@dams = Dam.all
+		@dams = Dam.all.order(id: :asc)
 	end
 
 	def show
-		@dams = Dam.all
+		@dams = Dam.all.order(id: :asc)
 		@dam = Dam.includes(:fish_counts, :fish).friendly.find(params[:id])
 		@fish_counts = @dam.fish_counts.for_year(Date.today.year).order(count_date: :desc).paginate(:page => params[:page], :per_page => 20, :total_entries => 500)
+		@water_quality = @dam.water_quality
 	end
 
 	def count_data

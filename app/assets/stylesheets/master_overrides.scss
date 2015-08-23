@@ -257,6 +257,7 @@ body {
 /* Repsonsive */
 
 @media screen and (max-width: 800px){
-	.dam-graph-block {display:none;}
+	// .dam-graph-block {display:none;}
+  .quality-block {display:none;}
 	.sidebar-block {display: none;}
 }
