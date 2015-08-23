@@ -4,7 +4,7 @@
   .panel.panel-default.text-block-1
     .panel-heading.text-center
       = @fish.name
-      .jumbotron
-        = image_tag @fish.avatar.url(:med) if @fish.avatar_file_name
-      %em fish data coming soon
+      .container.fill
+        = image_tag @fish.avatar.url(:med), :class => 'img-responsive fish-pic' if @fish.avatar_file_name
+        %em fish data coming soon
 
