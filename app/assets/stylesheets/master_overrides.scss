@@ -135,11 +135,17 @@ body {
 
 /* donut */
 #show_graph {
+  width: 400px;
   height: 400px;
   margin: 10px auto;
   position: relative;
-  width: 400px;
 }
+
+#mobile_graph {
+  display: none !important;
+}
+
+#try-later {display: none;}
 
 .legend {
 	font-size: 10px;
@@ -257,7 +263,18 @@ body {
 /* Repsonsive */
 
 @media screen and (max-width: 800px){
-	// .dam-graph-block {display:none;}
   .quality-block {display:none;}
 	.sidebar-block {display: none;}
+}
+
+@media screen and (max-width: 465px){
+  #show_graph {display: none !important;}
+  #mobile_graph {
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    position: relative;
+    display: block !important;
+  }
+
 }

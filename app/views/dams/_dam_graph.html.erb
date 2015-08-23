@@ -7,12 +7,79 @@
   </div>
 	<div id='show_graph'>
   </div>
+  <div id='mobile_graph'>
+  </div>
+  <div id='try-later'>
+    <p>This graph is not yet ready for mobile. Try flipping your phone horizontal.</p>
+  </div>
 </div>
 
 
 <script>
 
 var rel_path = ("<%= escape_javascript @dam.slug %>" + "/count_data.json");
+
+function appendMobileChart(count_data) {
+
+  var dataset = count_data;
+  var width = 200;
+  var height = 200;
+  var radius = Math.min(width, height) / 2;
+  var donutWidth = 37.5;
+  var legendRectSize = 9;                             
+  var legendSpacing = 4;                               
+
+  var color = d3.scale.category20c(); 
+
+  var svg = d3.select('#mobile_graph')
+    .append('svg')
+    .attr('width', "100%")
+    .attr('height', "100%")
+    .append('g')
+    .attr('transform', 'translate(' + (width / 2) + 
+      ',' + (height / 2) + ')');
+
+  var arc = d3.svg.arc()
+    .innerRadius(radius - donutWidth)
+    .outerRadius(radius);
+
+  var pie = d3.layout.pie()
+    .value(function(d) { return d.count; })
+    .sort(null);
+
+  var path = svg.selectAll('path')
+    .data(pie(dataset))
+    .enter()
+    .append('path')
+    .attr('d', arc)
+    .attr('fill', function(d, i) { 
+      return color((d.data.fish.name) + ":" + (d.data.count));
+    });
+  var legend = svg.selectAll('.legend')                
+    .data(color.domain())                              
+    .enter()                                           
+    .append('g')                                       
+    .attr('class', 'legend')                           
+    .attr('transform', function(d, i) {                
+      var height = legendRectSize + legendSpacing;     
+      var offset =  height * color.domain().length / 2;
+      var horz = -2 * legendRectSize;                  
+      var vert = i * height - offset;                  
+      return 'translate(' + horz + ',' + vert + ')';   
+    });                                                
+
+  legend.append('rect')                                
+    .attr('width', legendRectSize)                     
+    .attr('height', legendRectSize)                    
+    .style('fill', color)                              
+    .style('stroke', color);                           
+    
+  legend.append('text')                                
+    .attr('x', legendRectSize + legendSpacing)         
+    .attr('y', legendRectSize - legendSpacing)         
+    .text(function(d) { return d; });
+};
+
 
 function appendChart(count_data) {
 
@@ -28,8 +95,8 @@ function appendChart(count_data) {
 
   var svg = d3.select('#show_graph')
     .append('svg')
-    .attr('width', width)
-    .attr('height', height)
+    .attr('width', "100%")
+    .attr('height', "100%")
     .append('g')
     .attr('transform', 'translate(' + (width / 2) + 
       ',' + (height / 2) + ')');
@@ -42,19 +109,6 @@ function appendChart(count_data) {
     .value(function(d) { return d.count; })
     .sort(null);
 
-  // var tooltip = d3.select('#show_graph')             
-  //   .append('div')                             
-  //   .attr('class', 'tooltip');                 
-
-  //   tooltip.append('div')                        
-  //     .attr('class', 'label');                   
-
-  //   tooltip.append('div')                        
-  //     .attr('class', 'count');                   
-
-  //   tooltip.append('div')                        
-  //     .attr('class', 'percent');  
-
   var path = svg.selectAll('path')
     .data(pie(dataset))
     .enter()
@@ -63,21 +117,6 @@ function appendChart(count_data) {
     .attr('fill', function(d, i) { 
       return color((d.data.fish.name) + ":" + (d.data.count));
     });
-
-    // path.on('mouseover', function(d) {                            
-    //   var total = d3.sum(dataset.map(function(d) {                
-    //     return d.count;                                           
-    //     }));                                                        
-    //   var percent = Math.round(1000 * d.data.count / total) / 10; 
-    //     tooltip.select('.label').html(d.data.fish.name);                
-    //     tooltip.select('.count').html(d.data.count);                
-    //     tooltip.select('.percent').html(percent + '%');             
-    //     tooltip.style('display', 'block');                          
-    //   });                                                           
-          
-    //   path.on('mouseout', function() {                              
-    //     tooltip.style('display', 'none');                           
-    //   });
 
   var legend = svg.selectAll('.legend')                
     .data(color.domain())                              
@@ -103,13 +142,6 @@ function appendChart(count_data) {
     .attr('y', legendRectSize - legendSpacing)         
     .text(function(d) { return d; });
   
-  // function sumFun(count_data) {
-  //   sum = 0
-  //   for(var i = 0; i < count_data.length; i++) { 
-  //     sum += count_data[i].count
-  //   }
-  //   console.log(sum)
-  // };
 };
 
 $.ajax({
@@ -124,8 +156,11 @@ $.ajax({
                count_data = data;
                console.log(data);
                appendChart(count_data);
+               appendMobileChart(count_data);
                $("#show_graph").hide();
                $("#show_graph").delay(1500).fadeIn(350);
+               $("#mobile_graph").hide();
+               $("#mobile_graph").delay(1500).slideUp(300).fadeIn(350);
                $(".sk-folding-cube").delay(1500).slideUp(300);
            },
            error: function (result) {
