@@ -10,8 +10,5 @@ class Fish < ActiveRecord::Base
         attachment_size: { less_than: 5.megabytes }
 
     has_attached_file :avatar, 
-        styles: {thumb: '100x100>', med: '600x240>', full: '1200x480>'},
-        :storage => :s3,
-        :bucket  => ENV['MY_BUCKET_NAME']
-
+        styles: {thumb: '100x100>', med: '600x240>', full: '1200x480>'}
 end
