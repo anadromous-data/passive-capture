@@ -1,4 +1,10 @@
 <div class = 'container fill'>
+  <div class="sk-folding-cube">
+    <div class="sk-cube1 sk-cube"></div>
+    <div class="sk-cube2 sk-cube"></div>
+    <div class="sk-cube4 sk-cube"></div>
+    <div class="sk-cube3 sk-cube"></div>
+  </div>
 	<div id='show_graph'>
   </div>
 </div>
@@ -7,7 +13,6 @@
 <script>
 
 var rel_path = ("<%= escape_javascript @dam.slug %>" + "/count_data.json");
-console.log(rel_path);
 
 function appendChart(count_data) {
 
@@ -108,14 +113,20 @@ function appendChart(count_data) {
 };
 
 $.ajax({
+           beforeSend: function() {
+            $(".sk-folding-cube").show();
+           },
            type: "GET",
            contentType: "application/json; charset=utf-8",
            url: rel_path,
            dataType: 'json',
            success: function (data) {
                count_data = data;
-               appendChart(count_data);
                console.log(data);
+               appendChart(count_data);
+               $("#show_graph").hide();
+               $("#show_graph").delay(1500).fadeIn(350);
+               $(".sk-folding-cube").delay(1500).slideUp(300);
            },
            error: function (result) {
                console.log("Failed to Load");
