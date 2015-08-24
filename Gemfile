@@ -22,8 +22,6 @@ gem 'figaro'
 gem 'heroku-api'
 gem 'heroku_resque_autoscaler'
 gem 'resque-scheduler'
-# gem 'devise'
-# gem 'activeadmin', '~> 1.0.0.pre1'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'friendly_id'
@@ -38,6 +36,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
 end
+
+group :test do
+  gem 'shoulda-matchers', require: false
+end
+
 
 group :production do
 	gem 'unicorn'
