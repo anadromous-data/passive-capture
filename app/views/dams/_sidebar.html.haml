@@ -1,7 +1,10 @@
 .col-md-2
   .panel.panel-default.text-block-1
-    .panel-heading.title-text Index of Dams
+    .panel-heading.butntext.text-center
+      = link_to "All Dams", dams_path
     %ul.list-group
       - @dams.each do |dam|
         %li.list-group-item.title-text
           = link_to "#{dam.name}", dam_url(dam)
+    .panel-heading.butntext.text-center
+      = link_to "Home", root_path

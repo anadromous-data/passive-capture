@@ -1,8 +1,12 @@
 .col-md-2
   .panel.panel-default.text-block-1
-    .panel-heading.title-text Index of Fish
+    .panel-heading.butntext.text-center
+      = link_to "All Fish", fish_index_path
     %ul.list-group
       - @fishes.each do |fish|
         %li.list-group-item.title-text
-          = link_to "#{fish.name}", fish_url(fish)
+          / = link_to "#{fish.name}", "fish_url(fish)"
+          = "#{fish.name}"
+    .panel-heading.butntext.text-center
+      = link_to "Home", root_path
 
