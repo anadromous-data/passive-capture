@@ -13,9 +13,6 @@
         .butn.paper-raise
           map
 
-/ #parralax
-/   #parralax-content
-
 .container
   .text-block-1
     %h2.text-center.butntext
@@ -23,5 +20,13 @@
     %p.text-center.butntext
       select a dam below to view the daily fish counts
     = render :partial => "home_map"
+
+#parralax
+  #parralax-content
+    .col-md-4.col-md-offset-4
+      .text-block-2
+        %h3.text-center.butntext
+          %em Spawn Until You Die
+
 
       

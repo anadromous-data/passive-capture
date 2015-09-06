@@ -3,8 +3,6 @@
 
 
 body {
-	/* Temporarily adding font style to entire site */
-	font-family: "font-family: Volkhorn, serif";
 	background-image: image-url("wood-bg.jpg");
 	background-repeat: repeat;
 }
@@ -63,6 +61,14 @@ body {
 	}
 }
 
+.navbar-text {
+  font-family: "font-family: Volkhorn, serif";
+}
+
+.title-text {
+  font-family: "font-family: Volkhorn, serif";
+}
+
 
 /* Custom text blocks */
 
@@ -81,13 +87,18 @@ body {
 .text-block-2 {	
 	background-color: #fff;
 	padding: 2em;
+  margin-top: 20%;
 	border-radius: 10px 10px 10px 10px;
-	opacity: 0.9;
+	opacity: 0.6;
 
-	h1 {
+	h1 h3 p{
 		opacity: 1;
 	}
 }
+
+  .bio {
+    opacity: 0.8;
+  }
 
 /* Contain mapbox to an appropriate location on page */
 #map
@@ -105,6 +116,7 @@ body {
     width: 100%;
     min-width: 100%;
     opacity: 0.7;
+    margin-bottom: 1em;
 
     &:hover{
       opacity: 1;
@@ -193,7 +205,8 @@ body {
   min-height: 400px;
   padding:50px 20px 40px 20px;
   margin:0px auto;
-  margin-bottom: 1em;
+  margin-bottom: 6em;
+  margin-top: 6em;
   text-align:center;
 }
 
