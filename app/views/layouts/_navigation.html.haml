@@ -3,16 +3,9 @@
     .navbar-header
       %h4.navbar-text
         = link_to 'passive-capture', root_path
-    %ul.nav.navbar-nav.navy-items
-      %li.navbar-text.dropwdown{:role => "presentation"}
-        %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          data
-          %span.caret
-        %ul.dropdown-menu
-          %li
-            = link_to 'dams', dams_path
-          %li
-            = link_to 'fish', fish_index_path
+    %ul.nav.navbar-nav.navy-items.navbar-right
+      %li.navbar-text
+        = link_to 'blog', '#'
       %li.navbar-text
         = link_to 'about', about_path
       

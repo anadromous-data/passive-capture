@@ -1,0 +1,39 @@
+<div class = 'full'>
+  <div id='map'>
+  </div>
+</div>
+
+
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1Ijoic2lsbHNvbiIsImEiOiJhWEtuUjNzIn0.p5CUl9XxMqYV5q6LDkV0Fg';
+  
+  var map = L.mapbox.map('map', 'sillson.lhm0n06m').setView([46.24, -120.14], 6);
+
+  // Define polyline options
+  // http://leafletjs.com/reference.html#polyline
+  // var polyline_options = {
+  //     color: '#000'
+  // };
+
+  var col_polyline = L.polyline([]).addTo(map);
+  var col_length = columbiaNorthLine.length
+
+  var pointsAdded = 0;
+
+  add();
+
+  function add() {
+
+      // `addLatLng` takes a new latLng coordinate and puts it at the end of the line. To draw multiple lines, will have to switch out Columbia North Line for something dynamic.
+      col_polyline.addLatLng(
+          L.latLng(columbiaNorthLine.shift())
+          );
+     
+      if (++pointsAdded < col_length) window.setTimeout(add, 50);
+
+      // Panning? Gives me a headache
+      // map.setView([46.24, (line_points.shift())[1]], 6);
+
+  }
+
+</script>

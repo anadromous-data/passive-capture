@@ -1,0 +1,58 @@
+/* Custom Buttons */
+.butn {
+  position: relative;
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+
+  color: #484848;
+
+  font-family: sans-serif;
+  font-weight: 100;
+  letter-spacing: 1em;
+  
+  background-color: #bbb;
+  border: 1px solid #bba98a;
+
+  text-align: center;
+  text-decoration: none;
+  transform-style: flat;
+  transition: all 250ms ease-out;
+  
+  &:before,
+  &:after {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      transition: all 250ms ease-out;
+  }
+}
+
+
+.paper-raise {
+  &:before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    border: 1px solid #909090;
+    top:-2px;
+    
+    a {
+    color: #eee;
+    }
+    
+    &:before {
+      box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
+    }
+  }
+}
+
+.butntext {
+  &:hover{
+    text-decoration: none;
+  }
+}
+

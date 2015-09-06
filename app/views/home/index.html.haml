@@ -1,6 +1,18 @@
 .container
+  .row
+    .col-md-4.col-sm-4.col-xs-4
+      = link_to dams_path, :class => 'butntext' do
+        .butn.paper-raise
+          dams
+    .col-md-4.col-sm-4.col-xs-4
+      = link_to fish_index_path, :class => 'butntext' do
+        .butn.paper-raise 
+          fish
+    .col-md-4.col-sm-4.col-xs-4
+      = link_to map_path, :class => 'butntext' do
+        .butn.paper-raise
+          map
   .text-block-1
     = render :partial => "home_map"
-.container
-  %input{:onClick => "window.location.reload()", :type => "button", :value => "ReRun"}
+
       
