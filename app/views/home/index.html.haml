@@ -1,18 +1,27 @@
 .container
   .row
-    .col-md-4.col-sm-4.col-xs-4
+    .col-md-4.col-sm-4
       = link_to dams_path, :class => 'butntext' do
         .butn.paper-raise
           dams
-    .col-md-4.col-sm-4.col-xs-4
+    .col-md-4.col-sm-4
       = link_to fish_index_path, :class => 'butntext' do
         .butn.paper-raise 
           fish
-    .col-md-4.col-sm-4.col-xs-4
+    .col-md-4.col-sm-4
       = link_to map_path, :class => 'butntext' do
         .butn.paper-raise
           map
+
+/ #parralax
+/   #parralax-content
+
+.container
   .text-block-1
+    %h2.text-center.butntext
+      overview of dams
+    %p.text-center.butntext
+      select a dam below to view the daily fish counts
     = render :partial => "home_map"
 
       

@@ -104,6 +104,11 @@ body {
     height: 500px;
     width: 100%;
     min-width: 100%;
+    opacity: 0.7;
+
+    &:hover{
+      opacity: 1;
+    }
 }
 
 .full {
@@ -157,6 +162,7 @@ body {
 
 .legend {
 	font-size: 10px;
+  margin-top: 100px;
 }
 
 .tooltip {
@@ -178,11 +184,25 @@ body {
 	margin: auto;
 } 
 
+#parralax #parralax-content{
+  background-image: image-url("parsalmon.jpg");
+  background-size:cover;
+  background-attachment:fixed;
+  padding:100px 10px;
+  max-width:2000px;
+  min-height: 400px;
+  padding:50px 20px 40px 20px;
+  margin:0px auto;
+  margin-bottom: 1em;
+  text-align:center;
+}
+
 /* Repsonsive */
 
 @media screen and (max-width: 800px){
   .quality-block {display:none;}
 	.sidebar-block {display: none;}
+  #parralax {display: none;}
 }
 
 @media screen and (max-width: 465px){
