@@ -110,17 +110,21 @@ body {
     display: block;
 }
 
+.home-map{
+  opacity: 0.7;
+
+    &:hover{
+      opacity: 1;
+    }
+}
+
 .fill {
     min-height: 100%;
     height: 500px;
     width: 100%;
     min-width: 100%;
-    opacity: 0.7;
     margin-bottom: 1em;
 
-    &:hover{
-      opacity: 1;
-    }
 }
 
 .full {
