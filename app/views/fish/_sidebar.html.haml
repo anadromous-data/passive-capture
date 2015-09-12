@@ -5,8 +5,7 @@
     %ul.list-group
       - @fishes.each do |fish|
         %li.list-group-item.title-text
-          / = link_to "#{fish.name}", "fish_url(fish)"
-          = "#{fish.name}"
+          = link_to "#{fish.name}", fish_url(fish)
     .panel-heading.butntext.text-center
       = link_to "Home", root_path
 

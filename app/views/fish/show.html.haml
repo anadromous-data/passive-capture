@@ -4,7 +4,14 @@
   .panel.panel-default.text-block-1
     .panel-heading.text-center
       = @fish.name
-      .container.fill
-        = image_tag @fish.avatar.url(:med), :class => 'img-responsive fish-pic' if @fish.avatar_file_name
-        %em fish data coming soon
+    - @fish_counts.each do |fish|
+      - dam = Dam.find(fish.dam_id)
+      %p
+        %strong
+          = fish.count
+        %em
+          made it through
+          = link_to "#{dam.name}", dam_url(dam)
+          on
+          = fish.format_date
 

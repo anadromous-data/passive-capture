@@ -7,6 +7,7 @@ class FishController < ApplicationController
 	def show
 		@fishes = Fish.all.order(name: :asc)
 		@fish = Fish.includes(:fish_counts).friendly.find(params[:id])
+    @fish_counts = @fish.current_highest_counts
 		@dam = Dam.includes(:fish_counts, :fish)
 	end
 
