@@ -7,6 +7,8 @@ class Dam < ActiveRecord::Base
 	has_many :fish_counts
 	has_many :fish, through: :fish_counts
 
+	validates :name, presence: true, uniqueness: true
+
 	def water_quality
 		if self.code?
 			puts "#{self.code}"

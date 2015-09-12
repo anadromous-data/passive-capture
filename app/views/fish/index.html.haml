@@ -4,6 +4,25 @@
   .panel.panel-default.text-block-1
     .panel-heading.text-center
       Current Salmon Runs
-    %h2.text-center.butntext
-      %em coming soon
+    - @fishes.each do |fish|
+      - current_highest = fish.current_highest_counts.first
+      - second_highest = fish.current_highest_counts.second
+      %p
+        %strong
+          = fish.name
+        %em 
+          highest count
+        |
+        = current_highest.count
+        |
+        = (Dam.find(current_highest.dam_id)).name
+        |
+        %em
+          second highest:
+        |
+        = second_highest.count
+        |
+        = (Dam.find(second_highest.dam_id)).name
+    / %h2.text-center.butntext
+    /   %em coming soon
   / = render 'fish_index_graph'
