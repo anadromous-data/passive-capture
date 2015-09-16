@@ -5,7 +5,7 @@
     .panel-heading.text-center
       = @fish.name
     - @fish_counts.each do |fish|
-      - dam = Dam.find(fish.dam_id)
+      - dam = find_dam(fish)
       %p
         %strong
           = fish.count

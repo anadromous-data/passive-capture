@@ -7,6 +7,8 @@
     - @fishes.each do |fish|
       - current_highest = fish.current_highest_counts.first
       - second_highest = fish.current_highest_counts.second
+      - dam = find_dam(current_highest)
+      - second_dam = find_dam(second_highest)
       %p
         %strong
           = fish.name
@@ -15,11 +17,11 @@
         |
         = current_highest.count
         |
-        = (Dam.find(current_highest.dam_id)).name
+        = link_to "#{dam.name}", dam_url(dam)
         |
         %em
           second highest:
         |
         = second_highest.count
         |
-        = (Dam.find(second_highest.dam_id)).name
+        = link_to "#{second_dam.name}", dam_url(second_dam)
