@@ -33,12 +33,18 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl_rails'
+  gem 'faker', '~> 1.2.0'
 end
 
 group :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-its'
   gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
+  gem 'fabrication', '~> 2.9.8'
+  gem 'capybara'
+  gem 'vcr'
+  gem 'database_cleaner'
 end
 
 
