@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require home_map_polyline
+//= require map_fun
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
