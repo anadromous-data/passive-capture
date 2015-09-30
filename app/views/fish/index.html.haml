@@ -12,7 +12,8 @@
       %p
         %strong
           = fish.name
-        %em 
+        %em
+          = current_highest.format_date 
           highest count
         |
         = current_highest.count
