@@ -6,8 +6,11 @@
       Data From Our Most Recent Count
     = render :partial => "dam_graph"
   .panel.panel-default.text-block-1.quality-block
-    .panel-heading.text-center
-      Water Quality Data
-    = render :partial => "water_quality"
+    %h4.text-center
+      / %h2 Water Quality Data
+      %button.btn.btn-info{"data-target" => "#demo", "data-toggle" => "collapse", :type => "button"} Show Water Quality Data
+      #demo.collapse
+        %p.text-left
+          = @water_quality
 .col-md-5.fish-count-block
   = render :partial => "fish_count"
