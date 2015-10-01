@@ -5,5 +5,23 @@
 
 
 <script>
-  mapNadd("<%= escape_javascript(ENV["MAPBOX_TOKEN"]) %>", 7, columbiaNorthLine);
+
+L.mapbox.accessToken = "<%= escape_javascript(ENV["MAPBOX_TOKEN"]) %>";
+  
+var map = L.mapbox.map('map', 'sillson.lhm0n06m').setView([46.24, -120.14], 7);
+ 
+var col_polyline = L.polyline([]).addTo(map);
+var col_length = columbiaNorthLine.length
+var pointsAdded = 0;
+add();
+function add() {
+    // `addLatLng` takes a new latLng coordinate and puts it at the end of the line. To draw multiple lines, will have to switch out Columbia North Line for something dynamic.
+    col_polyline.addLatLng(
+        L.latLng(columbiaNorthLine.shift())
+        );
+   
+    if (++pointsAdded < col_length) window.setTimeout(add, 50);
+    // Panning? Gives me a headache
+    // map.setView([46.24, (line_points.shift())[1]], 6);
+}
 </script>
